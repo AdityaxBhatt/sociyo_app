@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sociyo/responsive_screen/responsive_layout_screen.dart';
 import 'package:sociyo/utils/colors.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -13,18 +14,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Sociyo',
-      theme: ThemeData.dark(),
-      home: const Scaffold(
-          backgroundColor: periwinkle,
-          body: Center(
-            child: Text(
-              'Hello',
-              style: TextStyle(
-                  fontWeight: FontWeight.bold, fontSize: 40, color: iris),
-            ),
-          )),
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'Sociyo',
+        theme: ThemeData.dark(),
+        home: ResponsiveScreen(
+            webScreenLayout: webScreenLayout,
+            mobileScreenLayout: mobileScreenLayout));
   }
 }
