@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "106759544709",
+    "project_id": "sociyo-92c42",
+    "storage_bucket": "sociyo-92c42.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:106759544709:android:464059b7217f4b92982eec",
+        "android_client_info": {
+          "package_name": "com.example.sociyo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "106759544709-83t4c741q1itgabtbkffab8s5ogm73q1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKMSR3I9ARrPDNPVPqD_18Ds0OH6AijQY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "106759544709-83t4c741q1itgabtbkffab8s5ogm73q1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "106759544709-puvl76alq1tmrbtrp8p447lpfbgn3tfo.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.sociyo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+
 import 'package:sociyo/utils/dimensions.dart';
 
 class ResponsiveScreen extends StatelessWidget {
