@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 class MobileScreen extends StatelessWidget {
   const MobileScreen({super.key});

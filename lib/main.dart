@@ -1,14 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:sociyo/responsive_screen/mobile_screen_layout.dart';
-import 'package:sociyo/responsive_screen/responsive_layout_screen.dart';
-import 'package:sociyo/responsive_screen/web_screen_layout.dart';
 import 'package:sociyo/screens/login_screen.dart';
-import 'package:sociyo/utils/colors.dart';
-import 'package:sociyo/utils/dimensions.dart';
-import 'package:velocity_x/velocity_x.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sociyo/screens/sign_up_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,6 +36,7 @@ class MyApp extends StatelessWidget {
 
         // home: const ResponsiveScreen(
         //     webScreenLayout: WebScreen(), mobileScreenLayout: MobileScreen()));
-        home: const LoginScreen());
+        home: const SignUpScreen());
+    //home: const LoginScreen());
   }
 }

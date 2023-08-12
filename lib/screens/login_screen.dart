@@ -1,5 +1,5 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:sociyo/utils/colors.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -10,6 +10,8 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
+bool _obscure = true;
+
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
       resizeToAvoidBottomInset: true,
       backgroundColor: quartz,
       body: SingleChildScrollView(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const PageScrollPhysics(),
         child: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -100,9 +102,20 @@ class _LoginScreenState extends State<LoginScreen> {
                       TextFormField(
                         style: const TextStyle(height: .7),
                         decoration: InputDecoration(
+                            suffixIcon: IconButton(
+                              icon: _obscure
+                                  ? const Icon(Icons.visibility)
+                                  : const Icon(Icons.visibility_off),
+                              onPressed: () {
+                                setState(() {
+                                  _obscure = !_obscure;
+                                });
+                              },
+                            ),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5)),
                             labelText: "Password"),
+                        obscureText: _obscure,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 220),
@@ -114,19 +127,23 @@ class _LoginScreenState extends State<LoginScreen> {
                       const HeightBox(35),
                       InkWell(
                         onTap: () {},
-                        child: Container(
-                          alignment: AlignmentDirectional.center,
+                        child: Ink(
                           width: 90,
                           height: 35,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(4),
                             color: violet,
                           ),
-                          child: const Text(
-                            "Login",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white),
+                          child: InkWell(
+                            onTap: () {},
+                            child: const Center(
+                              child: Text(
+                                "Login",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                            ),
                           ),
                         ),
                       ),
