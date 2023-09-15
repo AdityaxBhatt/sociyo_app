@@ -38,6 +38,7 @@ dependencies:
   flutter_custom_clippers: ^2.1.0
   flutter_launcher_icons: ^0.13.1
   google_fonts: ^5.1.0
+  loading_animation_widget: ^1.2.0+4
   velocity_x: ^3.3.0
 
 dev_dependencies:
@@ -57,7 +58,7 @@ flutter:
   assets:
    - assets/images/sociyo_icon.png
    - assets/images/S(thin).png
-   - assets/images/S-3 copy.png
+  
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

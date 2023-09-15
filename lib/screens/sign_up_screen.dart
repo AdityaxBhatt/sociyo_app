@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:sociyo/resources/auth_methods.dart';
 import 'package:sociyo/utils/colors.dart';
+import 'package:sociyo/utils/utils.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -12,19 +16,59 @@ class SignUpScreen extends StatefulWidget {
 bool _obscure = true;
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  final contEmail = TextEditingController();
+  final contName = TextEditingController();
+  final contUser = TextEditingController();
+  final contPass = TextEditingController();
+
+  bool _loading = false;
+
+  signUpUser() async {
+    setState(() {
+      _loading = true;
+    });
+    String res = await AuthMethods().signUPUser(
+      name: contName.toString(),
+      username: contUser.toString(),
+      email: contEmail.toString(),
+      password: contPass.toString(),
+    );
+    setState(() {
+      _loading = false;
+    });
+    if (res != "success") {
+      String s = "";
+
+      for (int i = 0; i < res.length; i++) {
+        if (res[i] == ']') {
+          i++;
+          for (int j = i; j < res.length; j++) {
+            s += res[j];
+          }
+          break;
+        }
+      }
+      showSnackBar(s, context);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: quartz,
       body: SingleChildScrollView(
-        physics: PageScrollPhysics(),
+        physics: const PageScrollPhysics(),
         child: SafeArea(
             child: Padding(
           padding: const EdgeInsets.all(12.0),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            "Welcome to".text.xl3.make(),
-            const HeightBox(5),
+            Text(
+              "Welcome to",
+              style: GoogleFonts.poppins(
+                  fontSize: 26, fontWeight: FontWeight.bold),
+            ),
+            const HeightBox(2),
             const Image(
               image: AssetImage(
                   "/Users/adityabhatt/Documents/sociyo_app/assets/images/S-31.png"),
@@ -52,6 +96,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           borderRadius: BorderRadius.circular(10)),
                       labelText: "Name",
                     ),
+                    controller: contName,
                   ),
                   const HeightBox(20),
                   TextFormField(
@@ -62,6 +107,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           borderRadius: BorderRadius.circular(10)),
                       labelText: "Username",
                     ),
+                    controller: contUser,
                   ),
                   const HeightBox(20),
                   TextFormField(
@@ -72,6 +118,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       labelText: "Email address",
                       hintText: "abc@gmail.com",
                     ),
+                    controller: contEmail,
                   ),
                   const HeightBox(20),
                   TextFormField(
@@ -92,6 +139,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             borderRadius: BorderRadius.circular(10)),
                         labelText: "Password"),
                     obscureText: _obscure,
+                    controller: contPass,
                   ),
                 ],
               ),
@@ -108,13 +156,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     color: violet,
                   ),
                   child: InkWell(
-                    onTap: () {},
-                    child: const Center(
-                      child: Text(
-                        "Create Account",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.white),
-                      ),
+                    onTap: signUpUser,
+                    child: Center(
+                      child: _loading
+                          ? Center(
+                              child: LoadingAnimationWidget.waveDots(
+                                size: 40,
+                                color: Colors.white,
+                              ),
+                            )
+                          : const Text(
+                              "Create Account",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
                     ),
                   ),
                 ),
